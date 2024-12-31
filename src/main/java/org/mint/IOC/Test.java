@@ -1,4 +1,7 @@
-package org.mint;
+package org.mint.IOC;
+
+import org.mint.configuration.BeanConfiguration;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 /**
  * @author 薄荷
@@ -7,10 +10,10 @@ package org.mint;
 
 public class Test {
     public static void main(String[] args) {
-        DataConfig dataConfig = new DataConfig();
-        dataConfig.setDriverName("Driver");
-        dataConfig.setUrl("localhost:3306/dbname");
-        dataConfig.setUsername("mint");
-        dataConfig.setPassword("040818");
+//        AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(BeanConfiguration.class);//单个配置
+        AnnotationConfigApplicationContext applicationContext1 = new AnnotationConfigApplicationContext("org.mint.IOC");//多个配置
+//        System.out.println(applicationContext.getBean("data"));
+        System.out.println(applicationContext1.getBean(DataConfig.class));
+        System.out.println(applicationContext1.getBean(GlobalConfig.class));
     }
 }
